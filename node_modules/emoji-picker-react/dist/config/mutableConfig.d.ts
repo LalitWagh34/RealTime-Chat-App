@@ -1,0 +1,9 @@
+import React from 'react';
+import { MouseDownEvent } from './config';
+export declare type MutableConfig = {
+    onEmojiClick?: MouseDownEvent;
+    onReactionClick?: MouseDownEvent;
+};
+export declare const MutableConfigContext: React.Context<React.MutableRefObject<MutableConfig>>;
+export declare function useMutableConfig(): React.MutableRefObject<MutableConfig>;
+export declare function useDefineMutableConfig(config: MutableConfig): React.MutableRefObject<MutableConfig>;

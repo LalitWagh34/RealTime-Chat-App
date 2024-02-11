@@ -12,8 +12,7 @@
     app.use("/api/auth" , userRoutes)
 
     mongoose.connect(process.env.MONGO_URL,{
-        useNewUrlParser :true,
-        useUnifiedTopology:true
+      
     }).then(()=>{
         console.log("DB Connection Succeddfull")
     }).catch((err)=>{

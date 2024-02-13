@@ -73,7 +73,7 @@ const Container =styled.div`
     display:grid;
     grid-template-rows:10% 75% 15%;
     overflow: hidden;
-    background-color:#080420;
+    background-color:#756AB6;
     .brand{
         display:flex;
         align-items:center;
@@ -96,17 +96,17 @@ const Container =styled.div`
         &::-webkit-scrollbar{
             width:0.2rem;
             &-thumb{
-                background-color:#ffffff39;
+                background-color:black;
                 width:0.1rem;
                 border-radius:1rem;
             }
         }
         .contact{
             background-color:#ffffff39;
-            min-height:5rem;
+            min-height:4rem;
             width:90%;
             cursor:pointer;
-            border-radius:0.2rem;
+            border-radius:0.3rem;
             padding:0.4rem;
             gap:1rem;
             align-items:center;
@@ -128,6 +128,7 @@ const Container =styled.div`
         }
     }
     .current-user{
+        
         background-color:#0d0d30;
         display:flex;
         justify-content:center;
@@ -135,7 +136,7 @@ const Container =styled.div`
         align-items:center;
         .avatar{
             img{
-                height:4rem;
+                height:3.5rem;
                 max-inline-size:100%
             }
         }
@@ -145,7 +146,7 @@ const Container =styled.div`
             }
         }
         @media screen and (min-width: 720px) and (max-width: 1080px) {
-            gap:0.5rem;
+            gap:0.6rem;
             .username{
                 h2{
                     font-size:1rem;

@@ -4,23 +4,24 @@ import Picker from "emoji-picker-react";
 import { IoMdSend } from "react-icons/io";
 import { BsEmojiSmileFill } from "react-icons/bs";
 
-export default function ChatInput() {
-  const [showEmoji, setShowEmoji] = useState(false);
+export default function ChatInput({handleSendMsg}) {
+  const [showEmojiPicker, setShowEmojiPicker] = useState(false);
   const [msg, setMsg] = useState("");
 
   const handleEmojiPicker = () => {
-    setShowEmoji(!showEmoji);
+    setShowEmojiPicker(!showEmojiPicker);
   };
 
-  const handleEmojiClick = (event, emoji) => {
+  const handleEmojiClick = ( emojiObject) => {
     let message = msg;
-    message += emoji.emoji;
+    message += emojiObject.emoji;
     setMsg(message);
   };
   const sendChat =(event) =>{
     event.preventDefault();
     if(msg.length> 0){
-        setMsg('')
+        handleSendMsg(msg);
+        setMsg("");
     }
 
   }
@@ -30,14 +31,15 @@ export default function ChatInput() {
       <div className="button-container">
         <div className="emoji">
           <BsEmojiSmileFill onClick={handleEmojiPicker} />
-          {showEmoji && (
-            <PickerContainer>
+          {showEmojiPicker && (
+        <PickerContainer>
               <Picker onEmojiClick={handleEmojiClick} />
-            </PickerContainer>
+        </PickerContainer>
+            
           )}
         </div>
       </div>
-      <form className="input-container">
+      <form className="input-container" onSubmit={(e) =>sendChat(e)}>
         <input
           type="text"
           placeholder="Type Your Message Here"
@@ -57,9 +59,12 @@ const Container = styled.div`
   grid-template-columns: 5% 95%;
   background-color: #0a1d56;
   padding: 0 2rem;
-//   padding-bottom:0.3rem;
-  padding-top: 41rem;
-  
+  padding-bottom:0.3rem;
+
+  @media screen and (min-width: 720px) and (max-width: 1080px) {
+    padding: 0 1rem;
+    gap:1rem;
+  }
 
   .button-container {
     position: relative;
@@ -75,6 +80,7 @@ const Container = styled.div`
         color: yellow;
         cursor: pointer;
       }
+      
     }
   }
 
@@ -84,7 +90,7 @@ const Container = styled.div`
     background-color: #ffffff34;
     display: flex;
     align-items: center;
-    gap: 2rem;
+    gap: 1rem;
 
     input {
       color: white;
@@ -109,6 +115,12 @@ const Container = styled.div`
       background-color: #9a86f3;
       border: none;
       cursor: pointer;
+      @media screen and (min-width: 720px) and (max-width: 1080px) {
+        padding: 0.3rem 1rem;
+        svg {
+          font-size: 1rem;
+        }
+      }
       svg {
         font-size: 2rem;
         color: white;

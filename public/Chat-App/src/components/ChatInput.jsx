@@ -3,6 +3,7 @@ import styled from "styled-components";
 import Picker from "emoji-picker-react";
 import { IoMdSend } from "react-icons/io";
 import { BsEmojiSmileFill } from "react-icons/bs";
+import { CgAdd } from "react-icons/cg";
 
 export default function ChatInput({handleSendMsg}) {
   const [showEmojiPicker, setShowEmojiPicker] = useState(false);
@@ -25,12 +26,16 @@ export default function ChatInput({handleSendMsg}) {
     }
 
   }
+  const handleImageSend =() =>{
+
+  }
 
   return (
     <Container>
       <div className="button-container">
         <div className="emoji">
           <BsEmojiSmileFill onClick={handleEmojiPicker} />
+          <CgAdd onClick={handleImageSend}/>
           {showEmojiPicker && (
         <PickerContainer>
               <Picker onEmojiClick={handleEmojiClick} />
@@ -71,12 +76,14 @@ const Container = styled.div`
     display: flex;
     align-items: center;
     color: white;
-    gap: 1rem;
+    
 
     .emoji {
       position: relative;
+      display:flex;
+      gap:0.5rem;
       svg {
-        font-size: 2rem;
+        font-size: 1.9rem;
         color: yellow;
         cursor: pointer;
       }
@@ -90,7 +97,8 @@ const Container = styled.div`
     background-color: #ffffff34;
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: 2rem;
+    margin-left:1rem;
 
     input {
       color: white;

@@ -10,11 +10,14 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@zegocloud/zego-uikit-prebuilt": "^1.10.2",
     "axios": "^1.6.7",
     "buffer": "^6.0.3",
+    "dotenv": "^16.4.4",
     "emoji-picker-react": "^4.7.16",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-native-image-picker": "^7.1.0",
     "react-toastify": "^10.0.4",
     "socket.io-client": "^4.7.4",
     "toastify": "^2.0.1",

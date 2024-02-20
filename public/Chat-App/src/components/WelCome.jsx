@@ -1,10 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import Robot from "../assets/robot.gif"
+import { FiAlignJustify } from "react-icons/fi";
 
-export default function Welcome({currentUser}){
+
+export default function Welcome({currentUser , }){
+    const [sidebarClose, setSidebarClose] = useState(true); // State to track sidebar open/close
+    
+    const toggleSidebar = () => {
+        setSidebarClose(!sidebarClose);
+    };
     return (
-    <Container>
+    <Container >
+       
         <img src={Robot} alt="Robot"/>
         <h1>
             Welcome ,
@@ -25,5 +33,6 @@ const Container = styled.div`
         img{
             height:20rem;
         }
+        
 
 `;

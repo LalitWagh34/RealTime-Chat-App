@@ -113,7 +113,7 @@ const Container  = styled.div`
     align-items:center;
     flex-direction:column;
     gap:3rem;
-    background-color:#131324;
+    background-color:#3A1078;
     height:100vh;
     width:100vw;
     .loader{
@@ -141,11 +141,11 @@ const Container  = styled.div`
             }
         }
         .selected{
-            border:0.4rem solid #4e0eff;
+            border:0.4rem solid blue;
         } 
     }
     .submit-btn{
-        background-color:#997af0;
+        background-color:#810CA8;
         color:white;
         padding:1rem 2rem;
         border:none;

@@ -75,7 +75,7 @@ function Login(){
                 <form onSubmit={(event) =>handleSubmit(event) }>
                     <div className="brand">
                         <img src={Logo} alt="Logo"/>
-                        <h1>snappy</h1>
+                      
                     </div>
                     <input type="text" 
                     placeholder="Username" 
@@ -111,14 +111,14 @@ const FormContainer = styled.div`
     justify-content: center;
     gap:1rem;
     align-items:center;
-    background-color:#131324;
+    background-color:#3A1078;
     .brand{
         display:flex;
         align-items:center;
         gap:1rem;
         justify-content:center;
         img{
-            height:5rem;
+            height:4rem;
         }
         h1{
             color:#fff;
@@ -129,7 +129,7 @@ const FormContainer = styled.div`
         display:flex;
         flex-direction:column;
         gap:2rem;
-        background-color:#00000076;
+        background-color:#2A0944;
         padding:3rem 5rem;
         border-radius:2rem;
         input{

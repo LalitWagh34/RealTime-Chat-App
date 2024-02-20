@@ -1,86 +1,106 @@
-import React,{useState , useEffect} from 'react';
-import styled from "styled-components" ;
-import Logo from "../assets/logo.svg";
+import React, { useState, useEffect } from 'react';
+import styled from "styled-components";
+import logo from "../assets/logo1.svg";
+import { FiAlignJustify } from "react-icons/fi";
 
-export default function Contacts({contacts ,currentUser ,changeChat}){
-    const[currentUserName , setCurrentUserName] = useState(undefined)
-    const[currentuserImage ,setCurrentuserImage] = useState(undefined);
-    const[currentSelected , setCurrentSelected] = useState(undefined);
-    useEffect(()=>{
-        if(currentUser){
+export default function Contacts({ contacts, currentUser, changeChat }) {
+    const [currentUserName, setCurrentUserName] = useState(undefined)
+    const [currentuserImage, setCurrentuserImage] = useState(undefined);
+    const [currentSelected, setCurrentSelected] = useState(undefined);
+    const [sidebarOpen, setSidebarOpen] = useState(true); 
+    useEffect(() => {
+        if (currentUser) {
             setCurrentuserImage(currentUser.avatarImage);
             setCurrentUserName(currentUser.username);
         }
-    },[currentUser]);
+    }, [currentUser]);
 
-    const changeCurrentChat = (index , contact ) =>{
+    const changeCurrentChat = (index, contact) => {
         setCurrentSelected(index);
         changeChat(contact);
     };
 
+    const toggleSidebar = () => {
+        setSidebarOpen(!sidebarOpen);
+    };
+
     return <>
-    {
+        {
 
-        currentuserImage && currentUserName && (
-        <Container>
-            <div className='brand'>
-                <img src={Logo} alt="logo"/>
-                <h3>Snappy</h3>
-            </div>
-            <div className='contacts'>
-            {contacts.map((contact, index) => {
-              return (
-                <div
-                  key={contact._id}
-                  className={`contact ${
-                    index === currentSelected ? "selected" : ""
-                  }`}
-                  onClick={() => changeCurrentChat(index, contact)}
-                >
-                  <div className="avatar">
-                    <img
-                      src={`data:image/svg+xml;base64,${contact.avatarImage}`}
-                      alt=""
-                    />
-                  </div>
-                  <div className="username">
-                    <h3>{contact.username}</h3>
-                  </div>
-                </div>
-              );
-            })}
-            </div>
-            <div className='current-user'>
-                <div className='avatar'>
-                    <img src={`data:image/svg+xml;base64,${currentuserImage}`} 
-                    alt="avatar"/>
-                 </div>
-                                
-                <div className="username">
-                    <h2>{currentUserName}</h2>
-                </div>
+            currentuserImage && currentUserName && (
+                <Container sidebarOpen={sidebarOpen}>
+                    <div className='brand'>
+                       
+                        <img src={logo} alt="logo" />
 
-            </div>
-        </Container> 
+                    </div>
+                    <div className='contacts'>
+                        {contacts.map((contact, index) => {
+                            return (
+                                <div
+                                    key={contact._id}
+                                    className={`contact ${
+                                        index === currentSelected ? "selected" : ""
+                                    }`}
+                                    onClick={() => changeCurrentChat(index, contact)}
+                                >
+                                    <div className="avatar">
+                                        <img
+                                            src={`data:image/svg+xml;base64,${contact.avatarImage}`}
+                                            alt=""
+                                        />
+                                    </div>
+                                    <div className="username">
+                                        <h3>{contact.username}</h3>
+                                    </div>
+                                </div>
+                            );
+                        })}
+                    </div>
+                    <div className='current-user'>
+                        <div className='avatar'>
+                            <img src={`data:image/svg+xml;base64,${currentuserImage}`}
+                                alt="avatar" />
+                        </div>
 
-        )
+                        <div className="username">
+                            <h2>{currentUserName}</h2>
+                        </div>
 
-    }
+                    </div>
+                </Container>
+
+            )
+
+        }
     </>
 }
 
-const Container =styled.div`
-    display:grid;
-    grid-template-rows:10% 75% 15%;
+const Container = styled.div`
+    display: grid;
+    grid-template-rows: 10% 75% 15%;
     overflow: hidden;
-    background-color:#756AB6;
+    background-color: #756AB6;
+    transform: ${({ sidebarOpen }) => sidebarOpen ? 'translateX(0)' : 'translateX(-100%)'};
+    transition: transform 0.3s ease-in-out;
+    .toggle {
+        font-size: 24px;
+        height: 100px;
+        width: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: start;
+    }
+  
+
+
     .brand{
         display:flex;
         align-items:center;
         justify-content:center;
-        gap:1rem;
+        
         img{
-            height:2rem;
+            height:4rem;
         }
         h3{
             color:white;
@@ -129,7 +149,7 @@ const Container =styled.div`
     }
     .current-user{
         
-        background-color:#0d0d30;
+        background-color:#3C0753;
         display:flex;
         justify-content:center;
         gap:2rem;
